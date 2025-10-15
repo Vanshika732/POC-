@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Questionnaire Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="email"], input[type="tel"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <form id="questionnaireForm">
+            <div class="form-group" id="q1">
+                <label>Select one:</label>
+                <select onchange="showNext('q2')">
+                    <option value="">--Select--</option>
+                    <option>New Client</option>
+                    <option>Existing Client with New Line of Business</option>
+                    <option>Existing Client being Reactivated (Inactive)</option>
+                    <option>New Business being received from another Subsidiary</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="q2" style="display:none">
+                <label>Select all the business units involved:</label>
+                <div>
+                    <input type="checkbox"> Accident and Health<br>
+                    <input type="checkbox"> AIS<br>
+                    <input type="checkbox"> Broadspire<br>
+                    <input type="checkbox"> Broadspire Medical Case Management<br>
+                    <input type="checkbox"> Claims Alert Call Center<br>
+                    <input type="checkbox"> Digital Desk<br>
+                    <input type="checkbox"> CFAS<br>
+                    <input type="checkbox"> Edjuster<br>
+                    <input type="checkbox"> GTS<br>
+                    <input type="checkbox"> Praxis<br>
+                    <input type="checkbox"> WeGoLook<br>
+                </div>
+                <button type="button" onclick="showNext('q3')">Next</button>
+            </div>
+
+            <div class="form-group" id="q3" style="display:none">
+                <label>What type of client is it?</label>
+                <select onchange="showNext('q4')">
+                    <option value="">--Select--</option>
+                    <option>Insurance Company</option>
+                    <option>Captive Insurance</option>
+                    <option>Captive Insurer</option>
+                    <option>Risk Pool</option>
+                    <option>London Syndicate</option>
+                    <option>MGA</option>
+                    <option>Corporate</option>
+                    <option>Lawfirm</option>
+                    <option>TPA</option>
+                    <option>Broadspire</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="q4" style="display:none">
+                <label>Please provide client details:</label>
+                <input type="text" placeholder="Client Name"><br><br>
+                <input type="text" placeholder="Contact Name"><br><br>
+                <input type="tel" placeholder="Phone Number"><br><br>
+                <input type="email" placeholder="Email"><br><br>
+                <textarea placeholder="Address"></textarea><br><br>
+                <button type="button" onclick="showNext('q5')">Next</button>
+            </div>
+
+            <div class="form-group" id="q5" style="display:none">
+                <label>Select the business line involved:</label>
+                <div>
+                    <input type="checkbox"> 1st Party Commercial Auto<br>
+                    <input type="checkbox"> 1st Party Personal Lines Auto<br>
+                    <input type="checkbox"> Agriculture<br>
+                    <input type="checkbox"> Aviation<br>
+                    <input type="checkbox"> Business Personal Property<br>
+                    <input type="checkbox"> Class Action<br>
+                    <input type="checkbox"> Commercial Auto Liability<br>
+                    <input type="checkbox"> Commercial General Liability<br>
+                    <input type="checkbox"> Contents<br>
+                    <input type="checkbox"> Environmental<br>
+                    <input type="checkbox"> Inland Marine<br>
+                    <input type="checkbox"> Product Liability<br>
+                    <input type="checkbox"> Product Recall<br>
+                    <input type="checkbox"> Subrogation<br>
+                    <input type="checkbox"> Workers' Compensation<br>
+                    <input type="checkbox"> Other<br>
+                </div>
+                <button type="button" onclick="showNext('q6')">Next</button>
+            </div>
+
+            <div class="form-group" id="q6" style="display:none">
+                <label>Which Claim Account will be used to service this Account?</label>
+                <select onchange="showNext('q7')">
+                    <option value="">--Select--</option>
+                    <option>AIS</option>
+                    <option>CMS</option>
+                    <option>Client Claim System</option>
+                    <option>Broadspire RMA</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="q7" style="display:none">
+                <label>Will we provide the Client’s FNOL services?</label>
+                <input type="radio" name="fnol" value="Yes" onclick="showNext('q8')"> Yes
+                <input type="radio" name="fnol" value="No" onclick="endForm()"> No
+            </div>
+
+            <div class="form-group" id="q8" style="display:none">
+                <label>How will Claims (FNOL) be reported?</label>
+                <div>
+                    <input type="checkbox"> Email to branch office or designated adjuster<br>
+                    <input type="checkbox"> Telephone<br>
+                    <input type="checkbox"> Web portal<br>
+                    <input type="checkbox"> Claim Alert Call Center<br>
+                    <input type="checkbox"> Internet<br>
+                    <input type="checkbox"> XactAnalysis<br>
+                    <input type="checkbox"> FNOL Online<br>
+                    <input type="checkbox"> CoreLogic<br>
+                    <input type="checkbox"> Other<br>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function showNext(id) {
+            document.getElementById(id).style.display = 'block';
+        }
+        function endForm() {
+            alert('Form completed.');
+        }
+    </script>
+</body>
+</html>
